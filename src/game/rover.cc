@@ -1,7 +1,7 @@
 #include "rover.h"
 #include "gameplay_model.h"
 
-Rover::Rover(Rect rect, float velocity) : rect(rect), velocity(velocity), wheels(3) {
+Rover::Rover(Rect rect, float velocity) : rect(rect), horizontalVelocity(velocity), wheels(3) {
     wheels[0] = Rect::fromCenter(0.0f, 0.0f, Size(wheelWidth, wheelHeight));
     wheels[1] = Rect::fromCenter(0.0f, 0.0f, Size(wheelWidth, wheelHeight));
     wheels[2] = Rect::fromCenter(0.0f, 0.0f, Size(wheelWidth, wheelHeight));
@@ -13,6 +13,7 @@ const std::vector<Rect>& Rover::getWheels() const {
 
 void Rover::init(const Rect& rect, const GameplayModel& model) {
     this->rect = rect;
+    this->isJumping = false;
     updateWheels(model);
 }
 
@@ -20,14 +21,22 @@ void Rover::updateWheels(const GameplayModel& model) {
     float offset = 0.15f;
     float rover_x = rect.getCenter().x;
 
-    float height = model.getTerrain().getHeightAt(wheels[0].x);
-    wheels[0].setCenter(Vector2(rover_x - 0.35 * rect.width, height - offset * rect.height));
+    if (isJumping) {
+        float height = rect.y + rect.height - rect.height * 0.1f;
+        wheels[0].setCenter(Vector2(rover_x - 0.35 * rect.width, height));
+        wheels[1].setCenter(Vector2(rover_x - 0.1 * rect.width, height));
+        wheels[2].setCenter(Vector2(rover_x + 0.3 * rect.width, height));
+    } else {
+        float height = model.getTerrain().getHeightAt(wheels[0].x);
+        wheels[0].setCenter(Vector2(rover_x - 0.35 * rect.width, height - offset * rect.height));
 
-    height = model.getTerrain().getHeightAt(wheels[1].x);
-    wheels[1].setCenter(Vector2(rover_x - 0.1 * rect.width, height - offset * rect.height));
+        height = model.getTerrain().getHeightAt(wheels[1].x);
+        wheels[1].setCenter(Vector2(rover_x - 0.1 * rect.width, height - offset * rect.height));
 
-    height = model.getTerrain().getHeightAt(wheels[2].x);
-    wheels[2].setCenter(Vector2(rover_x + 0.3 * rect.width, height - offset * rect.height));
+        height = model.getTerrain().getHeightAt(wheels[2].x);
+        wheels[2].setCenter(Vector2(rover_x + 0.3 * rect.width, height - offset * rect.height));
+    }
+
 }
 
 void Rover::driveFaster() {
@@ -43,7 +52,9 @@ void Rover::driveNormally() {
 }
 
 void Rover::update(float dt, const GameplayModel& model) {
-    rect += (Vector2(getCurrentVelocity(), 0)) * dt;
+    Vector2 vel = Vector2(getCurrentVelocity(), verticalVelocity);
+    rect += vel * dt;
+    std::cout << "Velocity: " << vel.toString() << std::endl;
 
     Vector2 moon_rover_center_camera_space = model.getCamera().worldToCamera(rect.getCenter());
     if (moon_rover_center_camera_space.x > 0.8f) {
@@ -56,9 +67,29 @@ void Rover::update(float dt, const GameplayModel& model) {
             rect.getSize());
     }
 
-    rect.y = model.getTerrain().getHeightAt(rect.getCenter().x) - rect.height;
+    float terrainHeight = model.getTerrain().getHeightAt(rect.getCenter().x);
+    float heightDiff = abs(rect.y + rect.height - terrainHeight);
+
+    if (isJumping) {
+        if (heightDiff < 0.01f && verticalVelocity > 0) {
+            isJumping = false;
+            verticalVelocity = 0;
+            rect.y = terrainHeight - rect.height;
+        } else {
+            verticalVelocity += 1.0f * dt;
+        }
+    } else {
+        rect.y = terrainHeight - rect.height;
+    }
 
     updateWheels(model);
+}
+
+void Rover::jump() {
+    if (!isJumping) {
+        isJumping = true;
+        verticalVelocity = -0.5f;
+    }
 }
 
 const Rect& Rover::getRect() const {
@@ -66,5 +97,5 @@ const Rect& Rover::getRect() const {
 }
 
 float Rover::getCurrentVelocity() const {
-    return velocity + additional_velocity;
+    return horizontalVelocity + additional_velocity;
 }

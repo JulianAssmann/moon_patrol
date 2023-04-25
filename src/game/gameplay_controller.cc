@@ -21,6 +21,10 @@ void GameplayController::handleEvent(SDL_Event& event, GameplayModel& model, flo
                     model.shoot();
                     is_shooting = true;
                 }
+                break;
+            case SDLK_j:
+                model.getMoonRover().jump();
+                break;
         }
     } else if (event.type == SDL_KEYUP) {
         switch (event.key.keysym.sym) {

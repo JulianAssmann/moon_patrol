@@ -33,6 +33,9 @@ public:
     /// @brief Return the velocity of the rover
     float getCurrentVelocity() const;
 
+    /// @brief Jump
+    void jump();
+
     /// @brief Update the rover
     void update(float dt, const GameplayModel& model);
 private:
@@ -41,9 +44,12 @@ private:
     Rect rect;
     std::vector<Rect> wheels;
     float additional_velocity = 0;
-    float velocity;
+    float horizontalVelocity;
+    float verticalVelocity = 0;
     const float wheelHeight = 0.035f;
     const float wheelWidth = 0.03f;
+    
+    bool isJumping = false;
 };
 
 #endif // ROVER_H
