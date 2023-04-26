@@ -51,7 +51,7 @@ void Rover::driveNormally() {
     additional_velocity = 0;
 }
 
-void Rover::update(float dt, const GameplayModel& model) {
+void Rover::update(const GameplayModel& model, float dt) {
     Vector2 vel = Vector2(getCurrentVelocity(), verticalVelocity);
     rect += vel * dt;
 

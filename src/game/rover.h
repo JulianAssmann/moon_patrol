@@ -37,7 +37,8 @@ public:
     void jump();
 
     /// @brief Update the rover
-    void update(float dt, const GameplayModel& model);
+    void update(const GameplayModel& model, float dt);
+    
 private:
     void updateWheels(const GameplayModel& model);
 

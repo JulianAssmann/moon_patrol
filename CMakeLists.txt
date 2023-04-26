@@ -72,6 +72,8 @@ add_library(game SHARED
     src/game/rover.cc
     src/game/terrain.h
     src/game/terrain.cc
+    src/game/background.h
+    src/game/background.cc
 )
 target_link_libraries(game utils mvc textures ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
 set_target_properties(game PROPERTIES LINKER_LANGUAGE CXX)

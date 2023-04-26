@@ -125,7 +125,6 @@ void Terrain::generateCrater(float x, Size size) {
         if (segment.x >= craterLeftX && segment.x <= craterRightX) {
             float xDiff = abs(segment.x - x);
             float yDiff =  (size.width * 0.5f - xDiff) / size.width * size.height;
-            std::cout << "\txDiff: " << xDiff << ", yDiff: " << yDiff << std::endl;
             segment.y += yDiff;
             segment.height -= yDiff;
         }

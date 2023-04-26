@@ -19,10 +19,10 @@ void GameplayView::init() {
 }
 
 void GameplayView::render(GameplayModel &model) {
-    for (Rect background : model.getBackgroundMountains()) {
+    for (Rect background : model.getBackground().getForegroundMountains()) {
         this->mountains_background_sprite.render(model.getCamera().worldToScreen(background));
     }
-    for (Rect background : model.getForegroundMountains()) {
+    for (Rect background : model.getBackground().getBackgroundMountains()) {
         this->mountains_foreground_sprite.render(model.getCamera().worldToScreen(background));
     }
     for (Rect terrain : model.getTerrain().getTerrainSegments()) {

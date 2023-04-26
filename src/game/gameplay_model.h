@@ -7,6 +7,7 @@
 #include "camera.h"
 #include "terrain.h"
 #include "rover.h"
+#include "background.h"
 #include "../utils/size.h"
 #include "../utils/rect.h"
 
@@ -28,43 +29,39 @@ public:
     Rover& getMoonRover();
 
     /// @brief Get the camera
-    Camera getCamera() const;
+    const Camera& getCamera() const;
 
     /// @brief Shoot a bullet
     void shoot();
 
-    /// @brief Get the first layer background rectangles
-    std::vector<Rect> getForegroundMountains() const;
-
-    /// @brief Get the second layer background rectangles
-    std::vector<Rect> getBackgroundMountains() const;
+    /// @brief Gets the background
+    /// @return The background
+    const Background& getBackground() const;
 
     /// @brief Get the upward bullets
     std::vector<Rect> getUpwardBullets() const;
 
+    /// @brief Get the speed the camera is moved to the right with
+    float getCameraSpeed() const;
+
     /// @brief Get the terrain
     const Terrain& getTerrain() const;
 private:
-    Rect mountainsForeground1;
-    Rect mountainsForeground2;
-
-    Rect mountainsBackground1;
-    Rect mountainsBackground2;
-    float parallax_factor = 0.5f;
-
     std::vector<Rect> upward_bullets;
     std::vector<Rect> forward_bullets;
 
     Camera camera;
 
-    Rover moon_rover;
+    Rover moonRover;
 
     Terrain terrain;
+
+    Background background;
 
     float lastCraterPos = 0.0f;
 
     /// @brief The speed of the moon rover in screen width multiples per second
-    static constexpr float camera_speed = 0.33f;
+    static constexpr float cameraSpeed = 0.33f;
 };
 
 #endif
