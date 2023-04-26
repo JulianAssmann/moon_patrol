@@ -1,7 +1,7 @@
 #include "gameplay_model.h"
 
 GameplayModel::GameplayModel() : 
-    moon_rover(Rover(Rect::fromCenter(0.5, 0.775, 0.13, 0.1), 0.2f)),
+    moon_rover(Rover(Rect::fromCenter(0.5, 0.775, 0.13, 0.1), camera_speed)),
     mountainsForeground1(Rect(0.0f, 0.0f, 1.0f, 1.0f)), 
     mountainsForeground2(Rect(1.0f, 0.0f, 1.0f, 1.0f)), 
     mountainsBackground1(Rect(0.0f, 0.0f, 1.0f, 1.0f)), 
@@ -54,6 +54,11 @@ void GameplayModel::update(float dt) {
     // Create new terrain if necessary
     terrain.removeTerrainTo(camera.getPosition().x - 1.5);
     terrain.generateTerrainTo(camera.getPosition().x + 1.5);
+
+    if (camera.getPosition().x > lastCraterPos) {
+        lastCraterPos += 2.0f;
+        terrain.generateCrater(lastCraterPos, Size(0.12f, 0.2f));
+    }
 }
 
 void GameplayModel::shoot() {

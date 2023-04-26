@@ -4,6 +4,7 @@
 #include <random>
 #include <vector>
 #include <cmath>
+#include <iostream>
 #include "../utils/rect.h"
 #include "../utils/vector2.h"
 
@@ -31,9 +32,9 @@ public:
     float getHeightAt(float x) const;
 
     /// @brief Generate a crater at the given position with the given size
-    /// @param position The position of the crater
+    /// @param x The x position of the crater
     /// @param size The size of the crater
-    void generateCrater(Vector2 position, Size size);
+    void generateCrater(float x, Size size);
 private:
 
     /// @brief Generate a terrain segment at the given x position
@@ -67,10 +68,9 @@ private:
     /// @brief The difference in height between two segments
     float segment_dy = 0.02f;
 
-    /// @brief The number of iterations with the same dy
-    int iterations_with_same_dy = 0;
-
     const int total_probability = 100;
+
+    static const int crater_segments_per_segment = 3;
 
     // The random number generator
     std::random_device rd;

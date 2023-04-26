@@ -4,11 +4,11 @@ Terrain::Terrain(float base_height, int num_segments, float segment_dy, float de
     base_height(base_height), 
     num_segments(num_segments), 
     max_height_deviation(deviation),
-    segment_width(1.0f / num_segments),
+    segment_width(1.0f / (crater_segments_per_segment * num_segments)),
     segment_dy(segment_dy),
     last_segment_x(0.0f),
     last_segment_height(base_height),
-    terrain_segments(std::vector<Rect>(num_segments)) {
+    terrain_segments(std::vector<Rect>(crater_segments_per_segment * num_segments)) {
 
     // Initialize the random number generator
     this->gen = std::mt19937(random_seed);
@@ -82,8 +82,6 @@ void Terrain::generateTerrainSegment(float x) {
             break;
     }
 
-    iterations_with_same_dy += diff == std::min(consecutive_flat_probability, last_segment_dy ? 1 : -iterations_with_same_dy);
-
     // Calculate the new height
     float height = this->last_segment_height + diff;
     
@@ -94,9 +92,12 @@ void Terrain::generateTerrainSegment(float x) {
         height = base_height - max_height_deviation;
     }
     
-    this->terrain_segments.push_back(Rect(x, height, segment_width * 1.1f, 1.0f - height));
+    // As the resolution for normal terrain is lower than for craters,
+    // we insert crater_segments_per_segment segments with the same height
+    for (int i = 0; i < crater_segments_per_segment; ++i)
+        this->terrain_segments.push_back(Rect(x + i * segment_width, height, segment_width * 1.2f, 1.0f - height));
 
-    this->last_segment_x = x + segment_width;
+    this->last_segment_x = x + crater_segments_per_segment * segment_width;
     this->last_segment_height = height;
     this->last_segment_dy = diff;
 }
@@ -112,14 +113,21 @@ void Terrain::removeTerrainTo(float x) {
     );
 }
 
-void Terrain::generateCrater(Vector2 position, Size size) {
-    for (int i = 0; i < this->terrain_segments.size(); i++) {
-        Rect segment = this->terrain_segments[i];
-        if (segment.x < position.x + size.width && segment.x + segment.width > position.x) {
-            if (segment.y < position.y + size.height && segment.y + segment.height > position.y) {
-                this->terrain_segments.erase(this->terrain_segments.begin() + i);
-                i--;
-            }
+void Terrain::generateCrater(float x, Size size) {
+    float craterLeftX = x - size.width / 2;
+    float craterRightX = x + size.width / 2;
+
+    if (last_segment_x < craterRightX) {
+        generateTerrainTo(craterRightX + 0.1);
+    }
+
+    for (Rect& segment : terrain_segments) {
+        if (segment.x >= craterLeftX && segment.x <= craterRightX) {
+            float xDiff = abs(segment.x - x);
+            float yDiff =  (size.width * 0.5f - xDiff) / size.width * size.height;
+            std::cout << "\txDiff: " << xDiff << ", yDiff: " << yDiff << std::endl;
+            segment.y += yDiff;
+            segment.height -= yDiff;
         }
     }
 }

@@ -54,7 +54,6 @@ void Rover::driveNormally() {
 void Rover::update(float dt, const GameplayModel& model) {
     Vector2 vel = Vector2(getCurrentVelocity(), verticalVelocity);
     rect += vel * dt;
-    std::cout << "Velocity: " << vel.toString() << std::endl;
 
     Vector2 moon_rover_center_camera_space = model.getCamera().worldToCamera(rect.getCenter());
     if (moon_rover_center_camera_space.x > 0.8f) {

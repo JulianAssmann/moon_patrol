@@ -1,6 +1,8 @@
 #ifndef SIZE_H
 #define SIZE_H
 
+#include <string>
+
 struct Size {
     float width;
     float height;
@@ -42,6 +44,10 @@ struct Size {
         width *= factor;
         height *= factor;
         return *this;
+    }
+
+    std::string toString() {
+        return "Size(" + std::to_string(width) + ", " + std::to_string(height) + ")";
     }
 };
 

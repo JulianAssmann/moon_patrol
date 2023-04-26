@@ -61,8 +61,10 @@ private:
 
     Terrain terrain;
 
+    float lastCraterPos = 0.0f;
+
     /// @brief The speed of the moon rover in screen width multiples per second
-    const float camera_speed = 0.2f;
+    static constexpr float camera_speed = 0.33f;
 };
 
 #endif
