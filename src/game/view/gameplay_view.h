@@ -2,9 +2,9 @@
 #define MAIN_VIEW_H
 
 #include <SDL2/SDL.h>
-#include "../texture/sprite.h"
-#include "gameplay_model.h"
-#include "camera.h"
+#include "../../texture/sprite.h"
+#include "../model/gameplay_model.h"
+#include "../model/camera.h"
 
 class GameplayView {
 public:

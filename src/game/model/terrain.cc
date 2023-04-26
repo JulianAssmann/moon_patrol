@@ -38,12 +38,14 @@ void Terrain::generateTerrainSegment(float x) {
     int consecutive_flat_probability = 2; // 10 in 100 chance of consecutive flat terrain (10%)
     int other_direction_probability = 28; // 30 in 100 chance of height change in the opposite direction (30%)
 
+    // If we are above the maximum height deviation, only allow 
+    // flat segments or segments going into the other direction.
     if (abs(last_segment_height - base_height) > max_height_deviation) {
         consecutive_flat_probability = 10;
         other_direction_probability = 90;
     }
-    
 
+    // Create the probability distribution to choose the next segment height
     std::discrete_distribution<int> dist;
     if (last_segment_dy > 0) {
         dist = std::discrete_distribution<>({

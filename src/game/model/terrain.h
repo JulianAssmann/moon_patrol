@@ -5,8 +5,8 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
-#include "../utils/rect.h"
-#include "../utils/vector2.h"
+#include "../../utils/rect.h"
+#include "../../utils/vector2.h"
 
 class Terrain {
 public:

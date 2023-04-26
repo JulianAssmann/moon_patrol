@@ -2,9 +2,9 @@
 #define CAMERA_H
 
 #include <SDL2/SDL.h>
-#include "../utils/rect.h"
-#include "../utils/vector2.h"
-#include "../utils/size.h"
+#include "../../utils/rect.h"
+#include "../../utils/vector2.h"
+#include "../../utils/size.h"
 
 /// @brief A camera with a position in world space and a size in screen space
 /// that is used to transform between world space, camera space and screen space

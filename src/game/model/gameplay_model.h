@@ -8,8 +8,8 @@
 #include "terrain.h"
 #include "rover.h"
 #include "background.h"
-#include "../utils/size.h"
-#include "../utils/rect.h"
+#include "../../utils/size.h"
+#include "../../utils/rect.h"
 
 class GameplayModel
 {

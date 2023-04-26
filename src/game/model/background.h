@@ -2,7 +2,7 @@
 #define BACKGOUND_H
 
 #include <vector>
-#include "../utils/rect.h"
+#include "../../utils/rect.h"
 
 class GameplayModel;
 

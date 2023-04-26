@@ -2,8 +2,8 @@
 #define ROVER_H
 
 #include <vector>
-#include "../utils/rect.h"
-#include "../utils/vector2.h"
+#include "../../utils/rect.h"
+#include "../../utils/vector2.h"
 
 class GameplayModel;
 

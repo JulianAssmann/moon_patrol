@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <memory>
-#include "gameplay_model.h"
-#include "../utils/size.h"
-#include "../utils/vector2.h"
+#include "../model/gameplay_model.h"
+#include "../../utils/size.h"
+#include "../../utils/vector2.h"
 
 class GameplayController {
 public:
