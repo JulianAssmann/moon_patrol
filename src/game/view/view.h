@@ -3,8 +3,9 @@
 
 #include <SDL2/SDL.h>
 #include "../../texture/sprite.h"
-#include "../model/gameplay_model.h"
+#include "../model/model.h"
 #include "../model/camera.h"
+#include "ui.h"
 
 class GameplayView {
 public:
@@ -26,6 +27,7 @@ private:
     Sprite mountains_background_sprite;
     Sprite bullet_sprite;
     Sprite wheel_sprite;
+    GameplayUI gameplayUI;
     std::shared_ptr<SDL_Renderer> renderer;
 };
 

@@ -59,12 +59,12 @@ set_target_properties(mvc PROPERTIES LINKER_LANGUAGE CXX)
 add_library(game SHARED
     src/game/gameplay_scene.h
     src/game/gameplay_scene.cc
-    src/game/controller/gameplay_controller.h
-    src/game/controller/gameplay_controller.cc
-    src/game/view/gameplay_view.h
-    src/game/view/gameplay_view.cc
-    src/game/model/gameplay_model.h
-    src/game/model/gameplay_model.cc
+    
+    src/game/controller/controller.h
+    src/game/controller/controller.cc
+
+    src/game/model/model.h
+    src/game/model/model.cc
     src/game/model/camera.h
     src/game/model/camera.cc
     src/game/model/rover.h
@@ -73,6 +73,11 @@ add_library(game SHARED
     src/game/model/terrain.cc
     src/game/model/background.h
     src/game/model/background.cc
+
+    src/game/view/view.h
+    src/game/view/view.cc
+    src/game/view/ui.h
+    src/game/view/ui.cc
 )
 target_link_libraries(game utils mvc textures ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
 set_target_properties(game PROPERTIES LINKER_LANGUAGE CXX)

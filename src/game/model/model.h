@@ -58,6 +58,8 @@ private:
 
     Background background;
 
+    float timeInLevel = 0.0f;
+
     float lastCraterPos = 0.0f;
 
     /// @brief The speed of the moon rover in screen width multiples per second

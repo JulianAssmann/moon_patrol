@@ -5,9 +5,9 @@
 #include <memory>
 #include "../mvc/scene.h"
 #include "../mvc/game.h"
-#include "model/gameplay_model.h"
-#include "view/gameplay_view.h"
-#include "controller/gameplay_controller.h"
+#include "model/model.h"
+#include "view/view.h"
+#include "controller/controller.h"
 
 /// @brief The main scene
 class GameplayScene : public Scene

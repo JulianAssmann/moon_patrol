@@ -1,6 +1,6 @@
 #include "background.h"
 
-#include "gameplay_model.h"
+#include "model.h"
 
 Background::Background(float foregroundParallaxFactor, float backgroundParallaxFactor) :
     mountainsForeground({Rect(0.0f, 0.0f, 1.0f, 1.0f), Rect(1.0f, 0.0f, 1.0f, 1.0f)}),

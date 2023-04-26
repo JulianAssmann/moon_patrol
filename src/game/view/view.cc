@@ -1,4 +1,4 @@
-#include "gameplay_view.h"
+#include "view.h"
 
 GameplayView::GameplayView(std::shared_ptr<SDL_Renderer> renderer) : 
     renderer(renderer), 
@@ -39,4 +39,6 @@ void GameplayView::render(GameplayModel &model) {
     for (Rect bullet : model.getUpwardBullets()) {
         this->bullet_sprite.render(model.getCamera().worldToScreen(bullet));
     }
+
+    gameplayUI.render(renderer, model.getCamera());
 }

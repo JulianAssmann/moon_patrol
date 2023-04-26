@@ -1,4 +1,4 @@
-#include "gameplay_controller.h"
+#include "controller.h"
 
 void GameplayController::init() {
     dt_since_last_shot = 0.0f;

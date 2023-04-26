@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <memory>
-#include "../model/gameplay_model.h"
+#include "../model/model.h"
 #include "../../utils/size.h"
 #include "../../utils/vector2.h"
 

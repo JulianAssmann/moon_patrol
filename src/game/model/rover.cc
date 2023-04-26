@@ -1,5 +1,5 @@
 #include "rover.h"
-#include "gameplay_model.h"
+#include "model.h"
 
 Rover::Rover(Rect rect, float velocity) : rect(rect), horizontalVelocity(velocity), wheels(3) {
     wheels[0] = Rect::fromCenter(0.0f, 0.0f, Size(wheelWidth, wheelHeight));

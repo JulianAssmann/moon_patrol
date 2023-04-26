@@ -1,4 +1,4 @@
-#include "gameplay_model.h"
+#include "model.h"
 
 GameplayModel::GameplayModel() : 
     moonRover(Rover(Rect::fromCenter(0.5, 0.775, 0.13, 0.1), cameraSpeed)),
@@ -15,6 +15,9 @@ void GameplayModel::init(Size windowSize)
 }
 
 void GameplayModel::update(float dt) {
+    // Increase the time spent in the current level 
+    // by the delta time since the last update
+    timeInLevel += dt;
 
     // Move the camera
     camera.move(Vector2(cameraSpeed, 0) * dt);
@@ -47,25 +50,25 @@ void GameplayModel::shoot() {
 }
 
 std::vector<Rect> GameplayModel::getUpwardBullets() const {
-    return upward_bullets;
+    return this->upward_bullets;
 }
 
 const Terrain& GameplayModel::getTerrain() const {
-    return terrain;
+    return this->terrain;
 }
 
 Rover& GameplayModel::getMoonRover() {
-    return moonRover;
+    return this->moonRover;
 }
 
 const Camera& GameplayModel::getCamera() const {
-    return camera;
+    return this->camera;
 }
 
 const Background& GameplayModel::getBackground() const {
-    return background;
+    return this->background;
 }
 
 float GameplayModel::getCameraSpeed() const {
-    return cameraSpeed;
+    return this->cameraSpeed;
 }
