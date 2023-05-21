@@ -27,11 +27,11 @@ public:
 
     /// @brief Render the sprite
     /// @param rect The rectangle to render the sprite in
-    virtual void render(SDL_Rect rect) const;
+    virtual void render(SDL_Rect rect, SDL_Color color = {255, 255, 255, 255}) const;
 
     /// @brief Render the sprite
     /// @param rect The rectangle to render the sprite in
-    virtual void render(Rect rect) const;
+    virtual void render(Rect rect, SDL_Color color = {255, 255, 255, 255}) const;
 
     /// @brief Get the size of the sprite
     /// @return The size of the sprite

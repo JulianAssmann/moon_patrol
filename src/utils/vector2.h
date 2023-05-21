@@ -9,8 +9,8 @@ struct Vector2
     float x;
     float y;
 
-    Vector2(float x, float y) : x(x), y(y) {}
-    Vector2() : x(0), y(0) {}
+    constexpr Vector2(float x, float y) : x(x), y(y) {}
+    constexpr Vector2() : x(0), y(0) {}
 
     std::string toString() const
     {

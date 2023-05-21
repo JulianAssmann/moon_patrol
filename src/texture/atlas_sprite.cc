@@ -11,6 +11,7 @@ void AtlasSprite::init()
     is_loaded = true;
 }
 
-void AtlasSprite::render(SDL_Rect rect) {
+void AtlasSprite::render(SDL_Rect rect, SDL_Color color) {
+    SDL_SetTextureColorMod(atlas->getTexture().get(), color.r, color.g, color.b);
     SDL_RenderCopy(renderer.get(), atlas->getTexture().get(), &src_rect, &rect);
 }

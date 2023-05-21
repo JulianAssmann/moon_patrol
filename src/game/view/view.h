@@ -22,11 +22,11 @@ public:
     /// @param model The model to render from
     virtual void render(GameplayModel &model);
 private:
-    Sprite rover_sprite;
-    Sprite mountains_foreground_sprite;
-    Sprite mountains_background_sprite;
-    Sprite bullet_sprite;
-    Sprite wheel_sprite;
+    Sprite roverSprite;
+    Sprite mountainsForegroundSprite;
+    Sprite mountainsBackgroundSprite;
+    Sprite bulletSprite;
+    Sprite wheelSprite;
     GameplayUI gameplayUI;
     std::shared_ptr<SDL_Renderer> renderer;
 };

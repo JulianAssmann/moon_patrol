@@ -2,13 +2,14 @@
 
 Sprite::Sprite(std::string path, std::shared_ptr<SDL_Renderer> renderer) : renderer(renderer), path(path) { }
 
-void Sprite::render(Rect rect) const {
-    this->render(rect.toSDLRect());
+void Sprite::render(Rect rect, SDL_Color color) const {
+    this->render(rect.toSDLRect(), color);
 }
 
-void Sprite::render(SDL_Rect rect) const
+void Sprite::render(SDL_Rect rect, SDL_Color color) const
 {
     if (is_loaded) {
+        SDL_SetTextureColorMod(texture, color.r, color.g, color.b);
         SDL_RenderCopy(renderer.get(), texture, NULL, &rect);
     }
 }

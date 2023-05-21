@@ -9,6 +9,7 @@
 #include "sprite.h"
 #include "../utils/size.h"
 
+/// @brief A sprite that uses a texture atlas
 class AtlasSprite : public Sprite
 {
 public:
@@ -25,7 +26,7 @@ public:
 
     /// @brief Render the texture
     /// @param rect The rectangle to render the texture in
-    void render(SDL_Rect rect);
+    void render(SDL_Rect rect, SDL_Color color = {255, 255, 255, 255});
 
 private:
     std::shared_ptr<TextureAtlas> atlas;

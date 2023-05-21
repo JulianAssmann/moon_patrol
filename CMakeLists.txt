@@ -29,9 +29,18 @@ ELSE()
     Message( FATAL_ERROR "SDL2_IMAGE NOT FOUND" )
 ENDIF()
 
+# Find SDL2_TTF
+FIND_PACKAGE(SDL2_TTF REQUIRED)
+IF (${SDL2_TTF_FOUND})
+    Message( STATUS "SDL2_TTF_INCLUDE_DIR: " ${SDL2_TTF_INCLUDE_DIR})
+    Message( STATUS "SDL2_TTF_LIBRARY: " ${SDL2_TTF_LIBRARY})
+ELSE()
+    Message( FATAL_ERROR "SDL2_TTF NOT FOUND" )
+ENDIF()
+
 add_library(utils SHARED
     src/utils/vector2.h 
-    src/utils/size.h 
+    src/utils/size.h
     src/utils/rect.h
 )
 set_target_properties(utils PROPERTIES LINKER_LANGUAGE CXX)
@@ -44,8 +53,10 @@ add_library(textures SHARED
     src/texture/atlas_sprite.cc
     src/texture/texture_atlas.h
     src/texture/texture_atlas.cc
+    src/texture/font.h
+    src/texture/font.cc
 )
-target_link_libraries(textures utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
+target_link_libraries(textures utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
 set_target_properties(textures PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(mvc SHARED
@@ -53,13 +64,13 @@ add_library(mvc SHARED
     src/mvc/game.h
     src/mvc/game.cc
 )
-target_link_libraries(mvc utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
+target_link_libraries(mvc utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
 set_target_properties(mvc PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(game SHARED
     src/game/gameplay_scene.h
     src/game/gameplay_scene.cc
-    
+
     src/game/controller/controller.h
     src/game/controller/controller.cc
 
@@ -79,7 +90,7 @@ add_library(game SHARED
     src/game/view/ui.h
     src/game/view/ui.cc
 )
-target_link_libraries(game utils mvc textures ${SDL2_LIBRARIES} SDL2_image::SDL2_image)
+target_link_libraries(game utils mvc textures ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
 set_target_properties(game PROPERTIES LINKER_LANGUAGE CXX)
 
 # Copy assets to runtime directory
@@ -88,5 +99,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 file(COPY assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 add_executable(${PROJECT_NAME} src/main.cc)
-include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image utils textures mvc game)
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf utils textures mvc game)

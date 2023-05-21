@@ -7,9 +7,9 @@ struct Size {
     float width;
     float height;
 
-    Size(int width, int height) : width(width), height(height) { }
-    Size(float width, float height) : width(width), height(height) { }
-    Size() : width(0), height(0) { }
+    constexpr Size(int width, int height) : width(width), height(height) { }
+    constexpr Size(float width, float height) : width(width), height(height) { }
+    constexpr Size() : width(0), height(0) { }
 
     bool operator==(const Size &other) const {
         return width == other.width && height == other.height;

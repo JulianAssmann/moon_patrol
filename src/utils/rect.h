@@ -21,32 +21,37 @@ struct Rect
     /// @brief The height of the rectangle
     float height;
 
+    /// @brief Create a rectangle from an SDL_Rect
+    /// @param rect The SDL_Rect to create the rectangle from
+    constexpr Rect(const SDL_Rect& rect) : x(rect.x), y(rect.y), width(rect.w), height(rect.h) {}
+
     /// @brief Create a rectangle
     /// @param x The x coordinate of the top left corner of the rectangle
     /// @param y The y coordinate of the top left corner of the rectangle
     /// @param width The width of the rectangle
     /// @param height The height of the rectangle
-    Rect(float x, float y, float width, float height) : x(x), y(y), width(width), height(height) {}
+    constexpr Rect(float x, float y, float width, float height)
+        : x(x), y(y), width(width), height(height) {}
 
     /// @brief Create a rectangle
     /// @param x The x coordinate of the top left corner of the rectangle
     /// @param y The y coordinate of the top left corner of the rectangle
     /// @param size The size of the rectangle
-    Rect(float x, float y, Size size) : x(x), y(y), width(size.width), height(size.height) {}
+    constexpr Rect(float x, float y, Size size) : x(x), y(y), width(size.width), height(size.height) {}
 
     /// @brief Create a rectangle
     /// @param position The top left corner of the rectangle
     /// @param width The width of the rectangle
     /// @param height The height of the rectangle
-    Rect(Vector2 position, float width, float height) : x(position.x), y(position.y), width(width), height(height) {}
+    constexpr Rect(Vector2 position, float width, float height) : x(position.x), y(position.y), width(width), height(height) {}
 
     /// @brief Create a rectangle
     /// @param position The top left corner of the rectangle
     /// @param size The size of the rectangle
-    Rect(Vector2 position, Size size) : x(position.x), y(position.y), width(size.width), height(size.height) {}
+    constexpr Rect(Vector2 position, Size size) : x(position.x), y(position.y), width(size.width), height(size.height) {}
 
     /// @brief Create a rectangle at position (0, 0) with size (0, 0)
-    Rect() : x(0), y(0), width(0), height(0) {}
+    constexpr Rect() : x(0), y(0), width(0), height(0) {}
 
     /// @brief Convert the rectangle to a string
     /// @return The string representation of the rectangle

@@ -48,6 +48,11 @@ void Game::init_sdl() {
         std::cout << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << std::endl;
         exit(1);
     }
+
+    if (TTF_Init() < 0) {
+        std::cout << "SDL_ttf could not initialize! SDL_ttf Error: " << TTF_GetError() << std::endl;
+        exit(1);
+    }
 }
 
 void Game::clearScreen() {
@@ -117,8 +122,9 @@ void Game::render() {
 
 Game::~Game() {
     delete currentScene;
-    SDL_Quit();
     IMG_Quit();
+    TTF_Quit();
+    SDL_Quit();
 }
 
 void Game::setScene(Scene *scene)

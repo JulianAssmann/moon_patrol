@@ -97,7 +97,7 @@ void Terrain::generateTerrainSegment(float x) {
     // As the resolution for normal terrain is lower than for craters,
     // we insert crater_segments_per_segment segments with the same height
     for (int i = 0; i < crater_segments_per_segment; ++i)
-        this->terrain_segments.push_back(Rect(x + i * segment_width, height, segment_width * 1.2f, 1.0f - height));
+        this->terrain_segments.push_back(Rect(x + i * segment_width, height, segment_width * 1.2f, 1.0f - height + 0.05f));
 
     this->last_segment_x = x + crater_segments_per_segment * segment_width;
     this->last_segment_height = height;

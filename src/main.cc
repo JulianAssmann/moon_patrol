@@ -2,8 +2,8 @@
 #include "game/gameplay_scene.h"
 #include "utils/size.h"
 
-const int SCREEN_WIDTH = 360 * 2;
-const int SCREEN_HEIGHT = 300 * 2;
+const int SCREEN_WIDTH = 400 * 1.5;
+const int SCREEN_HEIGHT = 400 * 1.5;
 
 int main(int argc, char *argv[])
 {
