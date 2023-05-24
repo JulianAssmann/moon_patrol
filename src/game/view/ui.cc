@@ -142,11 +142,11 @@ void GameplayUI::renderAttackWarning(Rect rect, bool isImminent, SDL_Color warni
 {
     if (isImminent)
     {
-        pointSprite.render(rect, red);
+        pointSprite.render(rect, warningColor);
         fontAttackWarnings.render(
             Vector2(rect.getTopRight().x + 0.5f * rect.width,
             rect.getTopLeft().y + rect.height * 0.5f - 0.5f * cautionTextSize.height),
-            "CAUTION", red);
+            "CAUTION", warningColor);
     }
     else
     {

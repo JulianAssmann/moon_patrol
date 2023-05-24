@@ -50,7 +50,7 @@ private:
     std::shared_ptr<SDL_Renderer> renderer;
 
     std::string padLeft(std::string& str, int n, char c = ' ');
-    void renderAttackWarning(Rect rect, bool isImminent);
+    void renderAttackWarning(Rect rect, bool isImminent, SDL_Color warningColor);
 
     SDL_Color yellow = {255, 255, 0, 255};
     SDL_Color red = {255, 0, 0, 255};
