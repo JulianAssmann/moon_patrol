@@ -13,8 +13,6 @@ _deps
 build/
 report/
 
-.DS_Store
-
 # Prerequisites
 *.d
 
@@ -47,3 +45,7 @@ report/
 *.exe
 *.out
 *.app
+
+
+*/.DS_Store
+.vscode/

@@ -1,0 +1,314 @@
+{
+    "frames": {
+        "exploding-rover0.png": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover1.png": {
+            "frame": {
+                "x": 64,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover2.png": {
+            "frame": {
+                "x": 128,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover3.png": {
+            "frame": {
+                "x": 0,
+                "y": 42,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover4.png": {
+            "frame": {
+                "x": 64,
+                "y": 42,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover5.png": {
+            "frame": {
+                "x": 128,
+                "y": 42,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover6.png": {
+            "frame": {
+                "x": 0,
+                "y": 84,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover7.png": {
+            "frame": {
+                "x": 64,
+                "y": 84,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover8.png": {
+            "frame": {
+                "x": 128,
+                "y": 84,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover9.png": {
+            "frame": {
+                "x": 0,
+                "y": 126,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover10.png": {
+            "frame": {
+                "x": 64,
+                "y": 126,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover11.png": {
+            "frame": {
+                "x": 128,
+                "y": 126,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover12.png": {
+            "frame": {
+                "x": 0,
+                "y": 168,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover13.png": {
+            "frame": {
+                "x": 64,
+                "y": 168,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        },
+        "exploding-rover14.png": {
+            "frame": {
+                "x": 128,
+                "y": 168,
+                "w": 64,
+                "h": 42
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 64,
+                "h": 42
+            },
+            "sourceSize": {
+                "w": 64,
+                "h": 42
+            }
+        }
+    },
+    "meta": {
+        "app": "https://github.com/piskelapp/piskel/",
+        "version": "1.0",
+        "image": "exploding-rover.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 192,
+            "h": 210
+        }
+    }
+}
