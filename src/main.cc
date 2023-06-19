@@ -1,5 +1,5 @@
-#include "mvc/game.h"
-#include "game/gameplay_scene.h"
+#include "base/game.h"
+#include "gameplay/gameplay_scene.h"
 #include "utils/size.h"
 
 const int SCREEN_WIDTH = 400 * 1.5;

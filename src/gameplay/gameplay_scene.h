@@ -3,8 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <memory>
-#include "../mvc/scene.h"
-#include "../mvc/game.h"
+#include "../base/scene.h"
+#include "../base/game.h"
 #include "model/model.h"
 #include "view/view.h"
 #include "controller/controller.h"

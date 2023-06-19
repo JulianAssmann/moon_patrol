@@ -7,10 +7,10 @@
 #include <SDL2/SDL.h>
 #include "../model/model.h"
 #include "../model/camera.h"
-#include "../../texture/sprite.h"
+#include "../../assets/sprite.h"
 #include "../../utils/rect.h"
 #include "../../utils/vector2.h"
-#include "../../texture/font.h"
+#include "../../assets/font.h"
 
 class GameplayUI {
 public:

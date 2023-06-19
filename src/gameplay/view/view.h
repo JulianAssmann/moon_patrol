@@ -2,7 +2,7 @@
 #define MAIN_VIEW_H
 
 #include <SDL2/SDL.h>
-#include "../../texture/sprite.h"
+#include "../../assets/sprite.h"
 #include "../model/model.h"
 #include "../model/camera.h"
 #include "ui.h"

@@ -39,59 +39,59 @@ ELSE()
 ENDIF()
 
 add_library(utils SHARED
-    src/utils/vector2.h 
+    src/utils/vector2.h
     src/utils/size.h
     src/utils/rect.h
 )
 set_target_properties(utils PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(utils ${SDL2_LIBRARIES})
 
-add_library(textures SHARED
-    src/texture/sprite.h
-    src/texture/sprite.cc
-    src/texture/atlas_sprite.h
-    src/texture/atlas_sprite.cc
-    src/texture/texture_atlas.h
-    src/texture/texture_atlas.cc
-    src/texture/font.h
-    src/texture/font.cc
+add_library(assets SHARED
+    src/assets/sprite.h
+    src/assets/sprite.cc
+    src/assets/atlas_sprite.h
+    src/assets/atlas_sprite.cc
+    src/assets/texture_atlas.h
+    src/assets/texture_atlas.cc
+    src/assets/font.h
+    src/assets/font.cc
 )
-target_link_libraries(textures utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
-set_target_properties(textures PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(assets utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
+set_target_properties(assets PROPERTIES LINKER_LANGUAGE CXX)
 
-add_library(mvc SHARED
-    src/mvc/scene.h
-    src/mvc/game.h
-    src/mvc/game.cc
+add_library(base SHARED
+    src/base/scene.h
+    src/base/game.h
+    src/base/game.cc
 )
-target_link_libraries(mvc utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
-set_target_properties(mvc PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(base utils ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
+set_target_properties(base PROPERTIES LINKER_LANGUAGE CXX)
 
-add_library(game SHARED
-    src/game/gameplay_scene.h
-    src/game/gameplay_scene.cc
+add_library(gameplay SHARED
+    src/gameplay/gameplay_scene.h
+    src/gameplay/gameplay_scene.cc
 
-    src/game/controller/controller.h
-    src/game/controller/controller.cc
+    src/gameplay/controller/controller.h
+    src/gameplay/controller/controller.cc
 
-    src/game/model/model.h
-    src/game/model/model.cc
-    src/game/model/camera.h
-    src/game/model/camera.cc
-    src/game/model/rover.h
-    src/game/model/rover.cc
-    src/game/model/terrain.h
-    src/game/model/terrain.cc
-    src/game/model/background.h
-    src/game/model/background.cc
+    src/gameplay/model/model.h
+    src/gameplay/model/model.cc
+    src/gameplay/model/camera.h
+    src/gameplay/model/camera.cc
+    src/gameplay/model/rover.h
+    src/gameplay/model/rover.cc
+    src/gameplay/model/terrain.h
+    src/gameplay/model/terrain.cc
+    src/gameplay/model/background.h
+    src/gameplay/model/background.cc
 
-    src/game/view/view.h
-    src/game/view/view.cc
-    src/game/view/ui.h
-    src/game/view/ui.cc
+    src/gameplay/view/view.h
+    src/gameplay/view/view.cc
+    src/gameplay/view/ui.h
+    src/gameplay/view/ui.cc
 )
-target_link_libraries(game utils mvc textures ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
-set_target_properties(game PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(gameplay utils base assets ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf)
+set_target_properties(gameplay PROPERTIES LINKER_LANGUAGE CXX)
 
 # Copy assets to runtime directory
 # set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -100,4 +100,4 @@ file(COPY assets DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 add_executable(${PROJECT_NAME} src/main.cc)
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf utils textures mvc game)
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} SDL2_image::SDL2_image SDL2_ttf::SDL2_ttf utils assets base gameplay)
