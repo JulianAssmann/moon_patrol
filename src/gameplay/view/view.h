@@ -20,15 +20,24 @@ public:
 
     /// @brief Render the model
     /// @param model The model to render from
-    virtual void render(GameplayModel &model);
+    void render(GameplayModel &model);
+
 private:
     Sprite roverSprite;
     Sprite mountainsForegroundSprite;
     Sprite mountainsBackgroundSprite;
     Sprite bulletSprite;
     Sprite wheelSprite;
+    Sprite bomberSprite;
+    Sprite impactBomberSprite;
+
     GameplayUI gameplayUI;
     std::shared_ptr<SDL_Renderer> renderer;
+
+    void renderBackground(GameplayModel &model);
+    void renderTerrain(GameplayModel &model);
+    void renderRover(GameplayModel &model);
+    void renderLevelEntities(GameplayModel &model);
 };
 
 #endif // MAIN_VIEW_H

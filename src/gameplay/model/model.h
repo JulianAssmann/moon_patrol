@@ -10,6 +10,7 @@
 #include "background.h"
 #include "../../utils/size.h"
 #include "../../utils/rect.h"
+#include "level/level.h"
 
 class GameplayModel
 {
@@ -27,6 +28,9 @@ public:
 
     /// @brief Get the rectangle for the moon rover
     Rover& getMoonRover();
+
+    /// @brief Get the level
+    Level& getLevel();
 
     /// @brief Get the camera
     const Camera& getCamera() const;
@@ -93,6 +97,8 @@ private:
     Terrain terrain;
 
     Background background;
+
+    Level level;
 
     float timeInLevel = 0.0f;
 

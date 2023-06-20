@@ -17,14 +17,16 @@ public:
     GameplayUI(std::shared_ptr<SDL_Renderer> renderer);
     void init();
     void render(const GameplayModel& model);
+
+    static constexpr float uiHeight = 0.19f;
     // void renderProgressBar(const GameplayModel& model);
 private:
     Rect containerRect;
     Rect progressBarBackgroundRect;
     Rect progressBarForegroundRect;
-    Rect aerialAttackWarningRect;
-    Rect minefieldWarningRect;
-    Rect terainWarningRect;
+    Vector2 aerialAttackWarningPoint;
+    Vector2 minefieldWarningPoint;
+    Vector2 terrainWarningPoint;
 
     Vector2 pointsTextPos;
     Vector2 pointsSinceLastCheckpointTextPos;
@@ -42,9 +44,8 @@ private:
 
     Size cautionTextSize;
 
-    static constexpr float uiHeight = 0.19f;
     static constexpr Rect subcontainerRect = Rect(
-        0.33f, 0.1f * uiHeight, 0.55f, 0.6 * uiHeight
+        0.33f, 0.1f, 0.55f, 0.6
     );
 
     std::shared_ptr<SDL_Renderer> renderer;

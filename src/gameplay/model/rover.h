@@ -38,7 +38,7 @@ public:
 
     /// @brief Update the rover
     void update(const GameplayModel& model, float dt);
-    
+
 private:
     void updateWheels(const GameplayModel& model);
 
@@ -49,7 +49,7 @@ private:
     float verticalVelocity = 0;
     const float wheelHeight = 0.035f;
     const float wheelWidth = 0.03f;
-    
+
     bool isJumping = false;
 };
 

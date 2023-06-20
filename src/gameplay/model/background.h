@@ -18,7 +18,7 @@ public:
 private:
     std::vector<Rect> mountainsForeground;
     std::vector<Rect> mountainsBackground;
-    
+
     float foregroundParallaxFactor;
     float backgroundParallaxFactor;
 };

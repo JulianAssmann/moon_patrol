@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(moon_patrol LANGUAGES CXX)
 
-# Set C++ standard to C++11
+# Set C++ standard to C++17
 set(CMAKE_CXX_STANDARD 17)
 
 # Print some useful information about the build
@@ -84,6 +84,13 @@ add_library(gameplay SHARED
     src/gameplay/model/terrain.cc
     src/gameplay/model/background.h
     src/gameplay/model/background.cc
+
+    src/gameplay/model/level/level.h
+    src/gameplay/model/level/level.cc
+    src/gameplay/model/level/level_entity.h
+    src/gameplay/model/level/level_entity.cc
+    src/gameplay/model/level/bomber.h
+    src/gameplay/model/level/bomber.cc
 
     src/gameplay/view/view.h
     src/gameplay/view/view.cc
