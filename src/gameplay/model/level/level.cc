@@ -30,7 +30,9 @@ Level Level::load(const std::string& path) {
             switch (type)
             {
             case LevelEntityType::BOMBER:
-                level.entitiesToBeSpawned.emplace(std::make_pair(xPos, Bomber(Vector2(xPos, 0.0f))));
+                level.entitiesToBeSpawned.emplace(
+                    std::make_pair(xPos,
+                    std::make_shared<Bomber>(Vector2(xPos, -0.2f))));
                 std::cout << "Bomber at " << xPos << std::endl;
                 break;
             default:
@@ -52,20 +54,20 @@ void Level::update(GameplayModel& model, float dt) {
     // Spawn new entities
     auto next = entitiesToBeSpawned.begin();
     while (next->first < xPos && next != entitiesToBeSpawned.end()) {
-        std::cout << "Spawning entity of type " << levelEntityTypeToString(next->second.getType()) << " at position " << next->first << std::endl;
-        next->second.activate(model);
+        std::cout << "Spawning entity of type " << levelEntityTypeToString(next->second->getType()) << " at position " << next->first << std::endl;
+        next->second->activate(model);
         activeEntites.push_back(next->second);
         next = entitiesToBeSpawned.erase(next);
     }
 
     // Update active entities
     for (auto& entity : activeEntites) {
-        entity.update(model, dt);
+        entity->update(model, dt);
     }
 
     // Clean up inactive entities
     for (auto it = activeEntites.begin(); it != activeEntites.end();) {
-        if (it->getState() == LevelEntityState::INACTIVE) {
+        if ((*it)->getState() == LevelEntityState::INACTIVE) {
             it = activeEntites.erase(it);
         } else {
             ++it;
@@ -73,7 +75,7 @@ void Level::update(GameplayModel& model, float dt) {
     }
 }
 
-std::vector<LevelEntity>& Level::getActiveEntities() {
+std::vector<std::shared_ptr<LevelEntity>>& Level::getActiveEntities() {
     return activeEntites;
 }
 

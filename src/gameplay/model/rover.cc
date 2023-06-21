@@ -79,7 +79,7 @@ void Rover::update(const GameplayModel& model, float dt) {
         }
     } else {
         float averageWheelHeight = (wheels[0].y + wheels[1].y + wheels[2].y) / 3.0f;
-        rect.y = averageWheelHeight - rect.height;
+        rect.y = averageWheelHeight - rect.height * 0.8f;
     }
 
     updateWheels(model);

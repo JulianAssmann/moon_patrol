@@ -15,14 +15,16 @@ public:
 
     void update(GameplayModel& model, float dt) override;
     virtual void dropBomb(GameplayModel& model);
-
-private:
+protected:
     float speed;
     float bombDropInterval;
     float bombDropTimer;
-    float swirrTimer;
-    float swirrInterval;
-    float swirrDeviation;
+
+    Vector2 currentDeviation;
+    Vector2 currentGoal;
+
+    virtual void setRandomGoal(GameplayModel& model);
+    virtual void onActivation(GameplayModel& model) override;
 };
 
 #endif // BOMBER_H

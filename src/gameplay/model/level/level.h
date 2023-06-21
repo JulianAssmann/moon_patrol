@@ -8,6 +8,7 @@
 #include <sstream>
 #include "level_entity.h"
 #include "bomber.h"
+#include <memory>
 
 class GameplayModel;
 
@@ -18,10 +19,10 @@ public:
     void save(const std::string& path) const;
     void update(GameplayModel& model, float dt);
 
-    std::vector<LevelEntity>& getActiveEntities();
+    std::vector<std::shared_ptr<LevelEntity>>& getActiveEntities();
 private:
-    std::map<float, LevelEntity> entitiesToBeSpawned;
-    std::vector<LevelEntity> activeEntites;
+    std::map<float, std::shared_ptr<LevelEntity>> entitiesToBeSpawned;
+    std::vector<std::shared_ptr<LevelEntity>> activeEntites;
 
     static std::string levelEntityTypeToString(LevelEntityType type);
     static LevelEntityType stringToGameLevelEntityType(const std::string& type);

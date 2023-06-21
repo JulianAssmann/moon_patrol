@@ -12,71 +12,59 @@ struct Vector2
     constexpr Vector2(float x, float y) : x(x), y(y) {}
     constexpr Vector2() : x(0), y(0) {}
 
-    std::string toString() const
-    {
+    std::string toString() const {
         return "Vector2(" + std::to_string(x) + ", " + std::to_string(y) + ")";
     }
 
-    Vector2 operator+(const Vector2& other) const
-    {
+    Vector2 operator+(const Vector2& other) const {
         return Vector2(x + other.x, y + other.y);
     }
 
-    Vector2 operator-(const Vector2& other) const
-    {
+    Vector2 operator-(const Vector2& other) const {
         return Vector2(x - other.x, y - other.y);
     }
 
-    Vector2 operator*(const float& other) const
-    {
+    Vector2 operator*(const float& other) const {
         return Vector2(x * other, y * other);
     }
-    Vector2 operator/(const float& other) const
-    {
+    Vector2 operator/(const float& other) const {
         float inv = 1.0f / other;
         return Vector2(x * inv, y * inv);
     }
 
-    Vector2& operator+=(const Vector2& other)
-    {
+    Vector2& operator+=(const Vector2& other) {
         x += other.x;
         y += other.y;
         return *this;
     }
 
-    Vector2& operator-=(const Vector2& other)
-    {
+    Vector2& operator-=(const Vector2& other) {
         x -= other.x;
         y -= other.y;
         return *this;
     }
 
-    Vector2& operator*=(const float& other)
-    {
+    Vector2& operator*=(const float& other) {
         x *= other;
         y *= other;
         return *this;
     }
-    Vector2& operator/=(const float& other)
-    {
+    Vector2& operator/=(const float& other) {
         float inv = 1.0f / other;
         x *= inv;
         y *= inv;
         return *this;
     }
-    
-    float lengthSquared() const
-    {
+
+    float lengthSquared() const {
         return x * x + y * y;
     }
 
-    float length() const
-    {
+    float length() const {
         return sqrt(lengthSquared());
     }
 
-    Vector2& normalize()
-    {
+    Vector2& normalize() {
         float len = length();
         if (len > 0.0f)
         {
@@ -87,25 +75,21 @@ struct Vector2
         return *this;
     }
 
-    Vector2 normalized() const
-    {
-        Vector2 result = *this;
+    Vector2 normalized() const {
+        Vector2 result = Vector2(x, y);
         result.normalize();
         return result;
     }
 
-    float dot(const Vector2& other) const
-    {
+    float dot(const Vector2& other) const {
         return x * other.x + y * other.y;
     }
 
-    float cross(const Vector2& other) const
-    {
+    float cross(const Vector2& other) const {
         return x * other.y - y * other.x;
     }
 
-    Vector2& rotate(float angle)
-    {
+    Vector2& rotate(float angle) {
         float s = sin(angle);
         float c = cos(angle);
         float nx = x * c - y * s;
@@ -113,6 +97,22 @@ struct Vector2
         x = nx;
         y = ny;
         return *this;
+    }
+
+    static Vector2 randomBetween(float minX, float maxX, float minY, float maxY) {
+        return Vector2(
+            randomFloat(minX, maxX),
+            randomFloat(minY, maxY));
+    }
+
+    static Vector2 randomBetween(Vector2 min, Vector2 max) {
+        return Vector2(
+            randomFloat(min.x, max.x),
+            randomFloat(min.y, max.y));
+    }
+
+    static float randomFloat(float min, float max) {
+        return min + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (max - min)));
     }
 };
 

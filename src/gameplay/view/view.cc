@@ -62,14 +62,11 @@ void GameplayView::renderRover(GameplayModel &model) {
 }
 
 void GameplayView::renderLevelEntities(GameplayModel &model) {
-    // std::cout << "Rendering " << model.getLevel().getActiveEntities().size() << " level entities" << std::endl;
     for (auto levelEntity : model.getLevel().getActiveEntities()) {
 
-        // std::cout << "Rendering level entity of type " << static_cast<int>(levelEntity.getType()) << std::endl;
+        SDL_Rect rect = model.getCamera().worldToScreen(levelEntity->getRect()).toSDLRect();
 
-        SDL_Rect rect = model.getCamera().worldToScreen(levelEntity.getRect()).toSDLRect();
-
-        switch (levelEntity.getType())
+        switch (levelEntity->getType())
         {
         case LevelEntityType::BOMBER:
             this->bomberSprite.render(rect);

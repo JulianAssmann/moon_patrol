@@ -42,6 +42,7 @@ add_library(utils SHARED
     src/utils/vector2.h
     src/utils/size.h
     src/utils/rect.h
+    src/utils/vector2.h
 )
 set_target_properties(utils PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(utils ${SDL2_LIBRARIES})
