@@ -31,6 +31,11 @@ Rect Font::render(SDL_Rect rect, const char* text, SDL_Color color) {
 
     std::string textStr = text;
     if (cachedText != textStr) {
+        if (cachedTexture) {
+            SDL_DestroyTexture(cachedTexture);
+            cachedTexture = nullptr;
+        }
+
         SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, color);
         if (!textSurface) {
             std::cout << "Failed to render text: " << textSurface << "; SDL_TTF Error: " << TTF_GetError() << std::endl;
