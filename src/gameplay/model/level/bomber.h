@@ -8,10 +8,11 @@
 #include "../../../utils/rect.h"
 
 class Bomber : public LevelEntity {
-
 public:
     Bomber(Vector2 startingPosition);
     Bomber(Rect rect);
+    Bomber(LevelEntityType type, Vector2 startingPosition);
+    Bomber(LevelEntityType type, Rect rect);
 
     void update(GameplayModel& model, float dt) override;
     virtual void dropBomb(GameplayModel& model);

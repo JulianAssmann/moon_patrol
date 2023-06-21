@@ -111,7 +111,7 @@ private:
     char lastCheckpoint = 'A';
     char highscoreCheckpoint = 'A';
 
-    bool isAerialAttackImminent = true;
+    bool isAerialAttackImminent = false;
     bool isMinefieldImminent = false;
     bool isTerrainBlockImminent = false;
 

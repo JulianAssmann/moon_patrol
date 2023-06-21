@@ -3,12 +3,19 @@
 
 Bomber::Bomber(Vector2 startingPosition)
     : Bomber(
+        LevelEntityType::BOMBER,
         Rect(
             startingPosition,
             Size(0.1f, 0.05f))) { }
 
-Bomber::Bomber(Rect rect) :
-    LevelEntity(LevelEntityType::BOMBER, LevelEntityAttackType::AERIAL, rect),
+Bomber::Bomber(Rect rect)
+    : Bomber(LevelEntityType::BOMBER, rect) { }
+
+Bomber::Bomber(LevelEntityType type, Vector2 startingPosition)
+    : Bomber(type, Rect(startingPosition, Size(0.1f, 0.05f))) { }
+
+Bomber::Bomber(LevelEntityType type, Rect rect) :
+    LevelEntity(type, LevelEntityAttackType::AERIAL, rect),
     speed(0.3f),
     bombDropInterval(2.0f),
     bombDropTimer(0.0f),

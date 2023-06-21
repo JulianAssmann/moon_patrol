@@ -35,6 +35,12 @@ Level Level::load(const std::string& path) {
                     std::make_shared<Bomber>(Vector2(xPos, -0.2f))));
                 std::cout << "Bomber at " << xPos << std::endl;
                 break;
+            case LevelEntityType::IMPACT_BOMBER:
+                level.entitiesToBeSpawned.emplace(
+                    std::make_pair(xPos,
+                    std::make_shared<ImpactBomber>(Vector2(xPos, -0.2f))));
+                std::cout << "ImpactBomber at " << xPos << std::endl;
+                break;
             default:
                 break;
             }

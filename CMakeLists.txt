@@ -92,6 +92,8 @@ add_library(gameplay SHARED
     src/gameplay/model/level/level_entity.cc
     src/gameplay/model/level/bomber.h
     src/gameplay/model/level/bomber.cc
+    src/gameplay/model/level/impact_bomber.h
+    src/gameplay/model/level/impact_bomber.cc
 
     src/gameplay/view/view.h
     src/gameplay/view/view.cc

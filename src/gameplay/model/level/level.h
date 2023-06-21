@@ -7,8 +7,9 @@
 #include <fstream>
 #include <sstream>
 #include "level_entity.h"
-#include "bomber.h"
 #include <memory>
+#include "bomber.h"
+#include "impact_bomber.h"
 
 class GameplayModel;
 
